@@ -33,8 +33,43 @@ public class GameAdapter extends ArrayAdapter<Games> {
                 context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.list_games, null);
 
+        ImageView img = (ImageView) view.findViewById(R.id.img);
+        TextView name = (TextView) view.findViewById(R.id.name);
+        TextView desc = (TextView) view.findViewById(R.id.desc);
+        TextView type = (TextView) view.findViewById(R.id.type);
 
+        name.setText(game.getName());
+        desc.setText(game.getDesc());
+        type.setText(game.getType());
+
+        int imgID = context.getResources().getIdentifier(game.getImg(), "drawable", context.getPackageName());
+        img.setImageResource(imgID);
 
         return view;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
