@@ -10,13 +10,18 @@ public class Games implements Serializable {
     private String name;
     private String desc;
     private String type;
+    private boolean checkbox;
 
-    public Games(int id, String img, String name, String desc, String type) {
+    public Games(int id, String img, String name, String desc, String type, boolean checkbox) {
         this.id = id;
         this.img = img;
         this.name = name;
         this.desc = desc;
         this.type = type;
+        this.checkbox = checkbox;
+    }
+
+    public Games() {
     }
 
     public int getId() {
@@ -58,4 +63,8 @@ public class Games implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
+    public boolean isCheckbox() { return checkbox; }
+
+    public void setCheckbox(boolean checkbox) { this.checkbox = checkbox; }
 }

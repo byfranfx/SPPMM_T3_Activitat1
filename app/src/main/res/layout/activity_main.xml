@@ -31,7 +31,7 @@
             android:layout_height="10dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintTop_toBottomOf="@+id/llistaActivitats"
-            app:layout_constraintBottom_toTopOf="@id/llistaActivitatsDone"/>
+            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"/>
 
         <ListView
             android:id="@+id/mainListViewDone"
