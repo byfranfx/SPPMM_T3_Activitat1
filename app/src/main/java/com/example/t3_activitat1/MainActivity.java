@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Games> gameListDone = new ArrayList<>();
     private ArrayList<Games> gameListNotDone = new ArrayList<>();
-    private ArrayAdapter<Games> listAdapter;
+    private ArrayAdapter<Games> listAdapter0;
+    private ArrayAdapter<Games> listAdapter1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        listAdapter = new GameAdapter(this, R.layout.list_games, gameListNotDone);
+        listAdapter0 = new GameAdapter(this, R.layout.list_games, gameListNotDone);
         ListView mainList = findViewById(R.id.mainListViewNotDone);
-        mainList.setAdapter(listAdapter);
+        mainList.setAdapter(listAdapter0);
 
-        listAdapter = new GameAdapter(this, R.layout.list_games, gameListDone);
+        listAdapter1 = new GameAdapter(this, R.layout.list_games, gameListDone);
         ListView mainListDone = findViewById(R.id.mainListViewDone);
-        mainListDone.setAdapter(listAdapter);
+        mainListDone.setAdapter(listAdapter1);
 
         mainList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(view.getContext(), DetallGame.class);
                 i.putExtra("mylist", gameListDone.get(position));
-                Toast toast1 = Toast.makeText(getApplicationContext(), "game", Toast.LENGTH_LONG);
-                toast1.show();
                 startActivity(i);
             }
         });
@@ -54,18 +53,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkboxUpdate(Games g){
         if(g.isCheckbox()){
-            /*gameListDone.remove(g);
+            gameListDone.remove(g);
+            gameListNotDone.add(g);
             Toast toast1 = Toast.makeText(getApplicationContext(), "desmarcat", Toast.LENGTH_LONG);
             toast1.show();
-            g.setCheckbox(false);*/
+            g.setCheckbox(false);
         } else {
             gameListNotDone.remove(g);
-            //gameListDone.add(g);
+            gameListDone.add(g);
             Toast toast1 = Toast.makeText(getApplicationContext(), "marcat", Toast.LENGTH_LONG);
             toast1.show();
             g.setCheckbox(true);
         }
-        listAdapter.notifyDataSetChanged();
+        listAdapter0.notifyDataSetChanged();
+        listAdapter1.notifyDataSetChanged();
+
         /*if(g.isCheckbox()){
             gameListDone.remove(g);
             gameListNotDone.add(g);
