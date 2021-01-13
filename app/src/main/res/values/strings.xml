@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">T3_Activitat1</string>
+    <string name="imatge_esdeveniment">Imatge esdeveniment</string>
+    <string name="name">name</string>
+    <string name="type">type</string>
+    <string name="desc">desc</string>
 </resources>

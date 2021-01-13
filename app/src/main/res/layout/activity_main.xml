@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#171717"
     tools:context=".MainActivity">
 
 
@@ -12,36 +13,86 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/mainListViewNotDone"
+        <View
+            android:id="@+id/divider3"
+
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"
+            app:layout_constraintTop_toBottomOf="@+id/llistaActivitats" />
+
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
+            android:background="#FFFFFF"
+            android:text="Favorite games"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
-            app:layout_constraintEnd_toStartOf="parent"
+        <View
+            android:id="@+id/divider4"
+
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"
+            app:layout_constraintTop_toBottomOf="@+id/llistaActivitats" />
+
+        <ListView
+            android:id="@+id/mainListViewDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#353535"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/divider">
-        </ListView>
+            app:layout_constraintTop_toBottomOf="@id/divider"></ListView>
 
         <View
             android:id="@+id/divider"
 
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintTop_toBottomOf="@+id/llistaActivitats"
-            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"/>
+            android:background="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"
+            app:layout_constraintTop_toBottomOf="@+id/llistaActivitats" />
 
-        <ListView
-            android:id="@+id/mainListViewDone"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#FFFFFFFF"
+            android:text="Games"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider2"
+
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/mainListViewNotDone"
+            app:layout_constraintTop_toBottomOf="@+id/llistaActivitats" />
+
+        <ListView
+            android:id="@+id/mainListViewNotDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFFFF"
+
+            android:clickable="true"
+            app:layout_constraintBottom_toTopOf="@id/divider"
+            app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"
-            app:layout_constraintBottom_toBottomOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
+
         </ListView>
+
     </LinearLayout>
 
 
