@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // checkBox
     public void checkboxUpdate(Games g){
         if(g.isCheckbox()){
             gameListDone.remove(g);
@@ -76,4 +80,31 @@ public class MainActivity extends AppCompatActivity {
         listAdapter1.notifyDataSetChanged();
     }
 
+
+
+
+    // Action Bar
+    public void actionBar(View view) {
+        finish();
+        Intent i = new Intent(this, AfegirGame.class);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem opcionMenu) {
+
+        int id = opcionMenu.getItemId();
+
+        // dAñadir Digimon
+        if (id == R.id.AB1) {
+            actionBar(null);
+            return true;
+        }
+        return super.onOptionsItemSelected(opcionMenu);
+    }
 }

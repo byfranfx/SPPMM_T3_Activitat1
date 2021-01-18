@@ -64,6 +64,5 @@
 
             </LinearLayout>
         </LinearLayout>
-
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
