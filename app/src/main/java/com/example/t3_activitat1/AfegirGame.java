@@ -9,36 +9,68 @@ import android.widget.EditText;
 
 public class AfegirGame extends AppCompatActivity {
 
+    private static final int CODI_PETICIO = 0;
+
+    public static final String keyName = "keyName";
+    public static final String keyDesc = "keyDesc";
+    public static final String keyType = "keyType";
+
+    public static final String CLAU_RETORN = "Clau_retorn";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.afegir_game);
+
+        
     }
 
-    @Override
-    public void finish()
-    {
-        EditText name = findViewById(R.id.nameEditText);
-        String valor = name.getText().toString();
+
+    /*@Override
+    public void finish() {
+
+        EditText text = findViewById(R.id.nameEditText);
+        String valor = text.getText().toString();
         Intent data = new Intent();
-        data.putExtra("Nombre", valor);
+        data.putExtra(keyName, valor);
         setResult(RESULT_OK, data);
 
         EditText desc = findViewById(R.id.descEditText);
         valor = desc.getText().toString();
         data = new Intent();
-        data.putExtra("Descripcion", valor);
+        data.putExtra(keyDesc, valor);
         setResult(RESULT_OK, data);
 
         EditText type = findViewById(R.id.typeEditText);
         valor = type.getText().toString();
         data = new Intent();
-        data.putExtra("Type", valor);
+        data.putExtra(keyType, valor);
         setResult(RESULT_OK, data);
         super.finish();
     }
-    public void tancaActivitat(View view)
-    {
+
+    public void tancaActivitat(View view) {
         finish();
+    }*/
+
+    public void enviarDadesOnClick(View view) {
+
+        //agafar el text introduït
+        EditText et1 = (EditText) findViewById(R.id.nameEditText);
+        String nameEditText = et1.getText().toString();
+
+        EditText et2 = (EditText) findViewById(R.id.descEditText);
+        String descEditText = et2.getText().toString();
+
+        EditText et3 = (EditText) findViewById(R.id.typeEditText);
+        String typeEditText = et3.getText().toString();
+
+        //Accions a fer...
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra(keyName,nameEditText);
+        i.putExtra(keyDesc,descEditText);
+        i.putExtra(keyType,typeEditText);
+        startActivityForResult(i,CODI_PETICIO);
+
     }
 }
