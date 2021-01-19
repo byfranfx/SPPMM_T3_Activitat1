@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String key = "keyCountId";
 
     private ArrayList<Games> gameListDone = new ArrayList<>();
-    private ArrayList<Games> gameListNotDone = new ArrayList<>();
+    public static ArrayList<Games> gameListNotDone = new ArrayList<>();
     private ArrayAdapter<Games> listAdapter0;
     private ArrayAdapter<Games> listAdapter1;
 
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Recollir dades introduides del nour game.
-        insertarGame(countId++);
-
+        //insertarGame(countId++);
 
         //
         gameListNotDone.add(new Games(countId++, "i1","Counter-Strike: GLobal Offensive","FPS, Disparos, Multijugador, Competitivo","Free To Play", false));
@@ -49,20 +48,6 @@ public class MainActivity extends AppCompatActivity {
         gameListNotDone.add(new Games(countId++, "i4","Deastiny 2","JcJ (PvP), JcE (PvE), Diparos","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i5","Team Fortress 2","FPS, Disparos de heroe, Multijugador","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i6","Brawlhalla","Multijugador, Lucha,  2D","Free To Play",false));
-
-        /*new Games(1, "i1","Counter-Strike: GLobal Offensive","FPS, Disparos, Multijugador, Competitivo","Free To Play", true);
-        new Games(2, "i2","Dota 2","FPS, Multijugador, Estrategia","Free To Play",false);
-        new Games(3, "i3","Apex Legends™","FPS, Primera persona, Disparos","Free To Play",false);
-        new Games(4, "i4","Deastiny 2","JcJ (PvP), JcE (PvE), Diparos","Free To Play",false);
-        new Games(5, "i5","Team Fortress 2","FPS, Disparos de heroe, Multijugador","Free To Play",false);
-        new Games(6, "i6","Brawlhalla","Multijugador, Lucha,  2D","Free To Play",false);
-
-        Games g = new Games();
-
-        if(g.isCheckbox()){
-
-        }*/
-
 
         listAdapter0 = new GameAdapter(this, R.layout.list_games, gameListNotDone);
         ListView mainList = (ListView) findViewById(R.id.mainListViewNotDone);
@@ -75,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     // metode per recollir les noves dades i insertarles dins la llista
     public void insertarGame(int countId) {
-        Bundle extras = getIntent().getExtras();
+        /*Bundle extras = getIntent().getExtras();
         if (extras != null) {
 
             // llegir el contingut de extras amb la mateixa etiqueta que hem emprat per a enviar
@@ -89,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             gameListNotDone.add(new Games(countId++, "",receivedName,receivedDesc,receivedType, false));
             System.out.println("countId: " + countId);
-        }
+        }*/
     }
 
     // checkBox
@@ -126,9 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem opcionMenu) {
-
         int id = opcionMenu.getItemId();
-
         if (id == R.id.AB1) {
             actionBar(null,0);
             return true;
