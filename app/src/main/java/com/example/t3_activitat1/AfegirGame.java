@@ -16,12 +16,7 @@ import java.util.Iterator;
 
 public class AfegirGame extends AppCompatActivity {
 
-    private static final int CODI_PETICIO = 0;
     private static final int PICK_IMAGE = 88;
-
-    public static final String keyName = "keyName";
-    public static final String keyDesc = "keyDesc";
-    public static final String keyType = "keyType";
 
     ImageView foto_gallery;
     Uri imageUri;
@@ -69,6 +64,7 @@ public class AfegirGame extends AppCompatActivity {
         String typeEditText = et3.getText().toString();
 
         ImageView iv4 = (ImageView) findViewById(R.id.foto_gallery);
+        String imgView;
 
 
 
@@ -94,14 +90,15 @@ public class AfegirGame extends AppCompatActivity {
             System.out.println("El número de elementos es de " + lengthList);
 
             lengthList++;
-            MainActivity.gameListNotDone.add(new Games(lengthList, "", nameEditText, descEditText, typeEditText, false));
+            MainActivity.gameListNotDone.add(new Games(lengthList, imageUri.toString(), nameEditText, descEditText, typeEditText, false));
+            System.out.println("imatge " + imageUri.toString());
             System.out.println("El número de elementos ahora es de " + lengthList);
 
-            /*Context context = getApplicationContext();
+            Context context = getApplicationContext();
             String text = MainActivity.gameListNotDone.get(lengthList).getName();
             //System.out.println (car.get(i).getPrice());
             int duration = Toast.LENGTH_SHORT;
-            Toast.makeText(context, text, duration).show();*/
+            Toast.makeText(context, text, duration).show();
 
             clearOnClick(view);
         }

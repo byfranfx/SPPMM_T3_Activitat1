@@ -19,19 +19,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int CODI_PETICIO = 0;
-    public static final String key = "keyCountId";
-
     private ArrayList<Games> gameListDone = new ArrayList<>();
     public static ArrayList<Games> gameListNotDone = new ArrayList<>();
     private ArrayAdapter<Games> listAdapter0;
     private ArrayAdapter<Games> listAdapter1;
 
-    String receivedName;
-    String receivedDesc;
-    String receivedType;
-
-    public int countId = 0;
+    private int countId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         gameListNotDone.add(new Games(countId++, "i5","Team Fortress 2","FPS, Disparos de heroe, Multijugador","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i6","Brawlhalla","Multijugador, Lucha,  2D","Free To Play",false));
         System.out.println("item 6  id." + countId);
+
         listAdapter0 = new GameAdapter(this, R.layout.list_games, gameListNotDone);
         ListView mainList = (ListView) findViewById(R.id.mainListViewNotDone);
         mainList.setAdapter(listAdapter0);
