@@ -38,17 +38,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Recollir dades introduides del nour game.
-        //insertarGame(countId++);
-
         //
-        gameListNotDone.add(new Games(countId++, "i1","Counter-Strike: GLobal Offensive","FPS, Disparos, Multijugador, Competitivo","Free To Play", false));
+        gameListNotDone.add(new Games(countId, "i1","Counter-Strike: GLobal Offensive","FPS, Disparos, Multijugador, Competitivo","Free To Play", false));
         gameListNotDone.add(new Games(countId++, "i2","Dota 2","FPS, Multijugador, Estrategia","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i3","Apex Legends™","FPS, Primera persona, Disparos","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i4","Deastiny 2","JcJ (PvP), JcE (PvE), Diparos","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i5","Team Fortress 2","FPS, Disparos de heroe, Multijugador","Free To Play",false));
         gameListNotDone.add(new Games(countId++, "i6","Brawlhalla","Multijugador, Lucha,  2D","Free To Play",false));
-
+        System.out.println("item 6  id." + countId);
         listAdapter0 = new GameAdapter(this, R.layout.list_games, gameListNotDone);
         ListView mainList = (ListView) findViewById(R.id.mainListViewNotDone);
         mainList.setAdapter(listAdapter0);
@@ -58,24 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mainListDone.setAdapter(listAdapter1);
     }
 
-    // metode per recollir les noves dades i insertarles dins la llista
-    public void insertarGame(int countId) {
-        /*Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-
-            // llegir el contingut de extras amb la mateixa etiqueta que hem emprat per a enviar
-            receivedName = extras.getString(AfegirGame.keyName);
-            receivedDesc = extras.getString(AfegirGame.keyDesc);
-            receivedType = extras.getString(AfegirGame.keyType);
-
-            // modificar el TextView i escriure-ho
-            //EditText textElement = findViewById(R.id.editTextAC2firstname);
-            //textElement.setText(textRebut);
-
-            gameListNotDone.add(new Games(countId++, "",receivedName,receivedDesc,receivedType, false));
-            System.out.println("countId: " + countId);
-        }*/
-    }
 
     // checkBox
     public void checkboxUpdate(Games g){
@@ -97,11 +76,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Action Bar
-    public void actionBar(View view, int countId) {
-        countId++;
+    public void actionBar(View view) {
         Intent i = new Intent(this, AfegirGame.class);
-        i.putExtra(key,countId);
-        startActivityForResult(i,CODI_PETICIO);
+        startActivity(i);
     }
 
     @Override
@@ -113,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem opcionMenu) {
         int id = opcionMenu.getItemId();
         if (id == R.id.AB1) {
-            actionBar(null,0);
+            actionBar(null);
             return true;
         }
         return super.onOptionsItemSelected(opcionMenu);
