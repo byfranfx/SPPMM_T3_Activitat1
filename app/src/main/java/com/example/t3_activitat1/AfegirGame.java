@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Iterator;
@@ -14,44 +17,43 @@ import java.util.Iterator;
 public class AfegirGame extends AppCompatActivity {
 
     private static final int CODI_PETICIO = 0;
+    private static final int PICK_IMAGE = 88;
 
     public static final String keyName = "keyName";
     public static final String keyDesc = "keyDesc";
     public static final String keyType = "keyType";
 
+    ImageView foto_gallery;
+    Uri imageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.afegir_game);
+
+        foto_gallery = (ImageView)findViewById(R.id.foto_gallery);
+
+        foto_gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
     }
 
-
-    /*@Override
-    public void finish() {
-
-        EditText text = findViewById(R.id.nameEditText);
-        String valor = text.getText().toString();
-        Intent data = new Intent();
-        data.putExtra(keyName, valor);
-        setResult(RESULT_OK, data);
-
-        EditText desc = findViewById(R.id.descEditText);
-        valor = desc.getText().toString();
-        data = new Intent();
-        data.putExtra(keyDesc, valor);
-        setResult(RESULT_OK, data);
-
-        EditText type = findViewById(R.id.typeEditText);
-        valor = type.getText().toString();
-        data = new Intent();
-        data.putExtra(keyType, valor);
-        setResult(RESULT_OK, data);
-        super.finish();
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
     }
 
-    public void tancaActivitat(View view) {
-        finish();
-    }*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
+            imageUri = data.getData();
+            foto_gallery.setImageURI(imageUri);
+        }
+    }
 
     public void enviarDadesOnClick(View view) {
 
@@ -65,6 +67,8 @@ public class AfegirGame extends AppCompatActivity {
 
         EditText et3 = (EditText) findViewById(R.id.typeEditText);
         String typeEditText = et3.getText().toString();
+
+        ImageView iv4 = (ImageView) findViewById(R.id.foto_gallery);
 
 
 
